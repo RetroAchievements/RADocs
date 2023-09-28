@@ -1,8 +1,11 @@
 site_name: RA Dev Docs
 site_url: https://retroachievements.org
+repo_url: https://github.com/RetroAchievements/RADocs/
+repo_name: RADocs Repo
 nav:
   - Home: index.md
   - About: about.md
+
 theme:
   name: material
   favicon: img/favicon.ico
@@ -27,3 +30,11 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tabs
+    - navigation.tabs.sticky
+
+plugins:
+  - search
