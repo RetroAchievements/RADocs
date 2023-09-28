@@ -1,0 +1,6 @@
+site_name: RA Dev Docs
+site_url: https://retroachievements.org
+nav:
+  - Home: index.md
+  - About: about.md
+theme: readthedocs
