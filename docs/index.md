@@ -1,6 +1,6 @@
 # RetroAchievements Development Docs
 
-Insert intro paragraph here.
+https://retroachievements.github.io/RADocs/
 
 ## Contributing
 
