@@ -1,0 +1,1 @@
+- **`PauseIf` cheat codes**: If the game has a cheat code to increase lives, select stages, etc. Make sure to find the addresses for it and add some kind of protection in your achievements.

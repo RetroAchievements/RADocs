@@ -1,0 +1,2544 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://retroachievements.org/richpresence/rp/">
+      
+      
+        <link rel="prev" href="../../logic/prior/">
+      
+      
+        <link rel="next" href="../../leaderboards/lb/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
+    
+    
+      
+        <title>Rich Presence Creation - RA Dev Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RA Dev Docs" class="md-header__button md-logo" aria-label="RA Dev Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RA Dev Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Rich Presence Creation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/RetroAchievements/RADocs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RADocs Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../logic/resetif/" class="md-tabs__link">
+          
+  
+    
+  
+  Logic
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  Rich Presence
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../leaderboards/lb/" class="md-tabs__link">
+          
+  
+    
+  
+  Leaderboards
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../badges/badgeiconcreation/" class="md-tabs__link">
+          
+  
+    
+  
+  Badges
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../other/design/" class="md-tabs__link">
+          
+  
+    
+  
+  Other
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../examples/ex1/" class="md-tabs__link">
+          
+  
+    
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RA Dev Docs" class="md-nav__button md-logo" aria-label="RA Dev Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    RA Dev Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/RetroAchievements/RADocs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RADocs Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Logic
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Logic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/resetif/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reset If
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/resetnextif/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reset Next If
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/pauseif/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pause If
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/andnextornext/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    And Next and Or Next
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/addsource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Add Source
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/subsource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sub Source
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/addhitssubhits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Add Hits and Sub Hits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/addaddress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Add Address
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/measured/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Measured
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/trigger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trigger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/altgroups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Alt Groups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/bitcount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BitCount Size
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/deltas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Delta Values
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/hitcounts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hit Counts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/prior/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prior Values
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Rich Presence
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Rich Presence
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Rich Presence Creation
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Rich Presence Creation
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-does-it-work" class="md-nav__link">
+    How Does it work?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-super-mario-bros" class="md-nav__link">
+    Example (Super Mario Bros.)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    Macros
+  </a>
+  
+    <nav class="md-nav" aria-label="Macros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lookups" class="md-nav__link">
+    Lookups
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#format" class="md-nav__link">
+    Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-macros" class="md-nav__link">
+    Built-in macros
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display" class="md-nav__link">
+    Display
+  </a>
+  
+    <nav class="md-nav" aria-label="Display">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-lookup-breakdown" class="md-nav__link">
+    Example Lookup Breakdown
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditional-display-strings" class="md-nav__link">
+    Conditional Display Strings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limits" class="md-nav__link">
+    Limits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-and-tricks" class="md-nav__link">
+    Tips and Tricks
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips and Tricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value-properties" class="md-nav__link">
+    Value Properties
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unicode-standard-symbols" class="md-nav__link">
+    Unicode Standard Symbols
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developing-rich-presence" class="md-nav__link">
+    Developing Rich Presence
+  </a>
+  
+    <nav class="md-nav" aria-label="Developing Rich Presence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parse-errors" class="md-nav__link">
+    Parse Errors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Leaderboards
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Leaderboards
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leaderboards/lb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Leaderboard Creation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Badges
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Badges
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../badges/badgeiconcreation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Badge and Icon Creation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Other
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Other
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Achievement Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/logic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/scoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Achievement Scoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/templates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Achievement Templates
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/combiningflags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Combining Flags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/syntax/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Condition Syntax
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/consoletips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Console Specific Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/devdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Docs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/balance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Difficulty Scale and Balance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/id/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Game Identification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary of Developer Terms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/meminsp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Inspector Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/minimumver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Minimum Versions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/ralibretro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RALibretro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/ratools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RATools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/roadmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Set Development Roadmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/value/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Value Definition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips and Tricks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing for Demo Mode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/memmapping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Systems Memory Mapping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/regional/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regional Compatibility
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/codenotesenmasse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code Notes En Masse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ex1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ex2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ex3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ex4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ex5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ex6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-does-it-work" class="md-nav__link">
+    How Does it work?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-super-mario-bros" class="md-nav__link">
+    Example (Super Mario Bros.)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    Macros
+  </a>
+  
+    <nav class="md-nav" aria-label="Macros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lookups" class="md-nav__link">
+    Lookups
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#format" class="md-nav__link">
+    Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-macros" class="md-nav__link">
+    Built-in macros
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display" class="md-nav__link">
+    Display
+  </a>
+  
+    <nav class="md-nav" aria-label="Display">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-lookup-breakdown" class="md-nav__link">
+    Example Lookup Breakdown
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditional-display-strings" class="md-nav__link">
+    Conditional Display Strings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limits" class="md-nav__link">
+    Limits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-and-tricks" class="md-nav__link">
+    Tips and Tricks
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips and Tricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value-properties" class="md-nav__link">
+    Value Properties
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unicode-standard-symbols" class="md-nav__link">
+    Unicode Standard Symbols
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developing-rich-presence" class="md-nav__link">
+    Developing Rich Presence
+  </a>
+  
+    <nav class="md-nav" aria-label="Developing Rich Presence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parse-errors" class="md-nav__link">
+    Parse Errors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Rich Presence Creation</h1>
+
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#how-does-it-work">How Does it work?</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#macros">Macros</a></li>
+<li><a href="#lookups">Lookups</a></li>
+<li><a href="#format">Format</a></li>
+<li><a href="#built-in-macros">Built-in macros</a></li>
+<li><a href="#display">Display</a></li>
+<li><a href="#example-lookup-breakdown">Example Lookup Breakdown</a></li>
+<li><a href="#conditional-display-strings">Conditional Display Strings</a></li>
+<li><a href="#limits">Limits</a></li>
+<li><a href="#tips-and-tricks">Tips and Tricks</a></li>
+<li><a href="#value-properties">Value Properties</a></li>
+<li><a href="#unicode-standard-symbols">Unicode Standard Symbols</a></li>
+<li><a href="#developing-rich-presence">Developing Rich Presence</a></li>
+<li><a href="#parse-errors">Parse Errors</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Rich Presence (RP) is <strong>brief</strong> overview of what active players are currently doing in their game. To have RP in a game you need a Rich Presence script, which is created by Developers. The script checks the player's game memory and reports the values of certain addresses with definitions assigned by the Developer such as which stage the player is on, how many lives they have, if the game is paused, what game mode they are playing, what the player has accomplished, etc. This information is reported back to the website once every two minutes.</p>
+<p>A good rich presence should inform other users how far into the game you are (level/ town/dungeon), and give an overall sense of how the player is doing (score/remaining lives/character level). Additional details may be useful, depending on their context within the game. Try not to go overboard with the detail though. Other players don't care what you named your dog, or need to know how many bullets you have left, especially since it only updates every two minutes. Additionally, the more fluff you add to a rich presence display, the more diluted the important information becomes.</p>
+<p><strong>Example of RP in action:</strong></p>
+<p><img alt="Example of RP in action" src="https://i.imgur.com/E5097sz.png" />  </p>
+<p>To see the RP live in a game click on the RetroAchievements menu in your emulator and then click on Rich Presence Monitor. A small window will show you your active RP. (Good for debugging)</p>
+<p><img alt="Rich Presence Monitor" src="https://i.imgur.com/XkCZoLG.png" /></p>
+<p>The best way to understand Rich Presence is to look at various examples in game, look at the addresses used and look at how the text is displayed in the Rich Presence Monitor and on site.</p>
+<h3 id="how-does-it-work">How Does it work?</h3>
+<p>The game's Rich Presence script is downloaded with the achievement and leaderboard data for a game. As soon as the emulator validates this data, it starts a session for the user. This sets the user's 'Last Seen In' to 'Playing [game]'. 30 seconds later, the Rich Presence script will be evaluated and the result sent to the server. This will update the 'Last Seen In' for the player, which is also used in the 'Active Players' list on the front page. Every two minutes after that, the Rich Presence script will be evaluated again, and the 'Last Seen In' will be updated again. This continues until the user closes the emulator.</p>
+<p>If there isn't a Rich Presence script for the game, the user has disabled rich presence, or the user has modified the Rich Presence script, the text will remain 'Playing [game]'.</p>
+<p>The user's 'Last Seen In' may also say 'Fixing Achievements' or 'Developing Achievements' if they have any of the tool windows open. The first will display if achievements have been published for the set. The second if achievements have not been published for the set.</p>
+<p>The Rich Presence script for a game can be found under the development section on each game's page: </p>
+<p><img alt="Dev click" src="https://i.imgur.com/sqxOjyL.png" /></p>
+<p><img alt="RP shown" src="https://i.imgur.com/e7qoaNx.png" /></p>
+<h2 id="example-super-mario-bros">Example (Super Mario Bros.)</h2>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Format:Digit
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>FormatType=VALUE
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Lookup:Mode
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>0=[Demo] 
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>2=[World Complete] 
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Lookup:Paused
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>0x81=▌▌ 
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>0x80=▌▌ 
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>1=▌▌ 
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>Lookup:Star
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>5=🌟 
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>4=🌟 
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>3=🌟 
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>2=🌟 
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>1=🌟 
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>Lookup:Powerup
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>0=Small
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>1=Super
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>2=Fire
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>Lookup:Swimming
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>1= swimming
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>Lookup:Status
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>0= [Loading]
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>1= taking a vine warp
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>2= entering a warp pipe
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>3= entering a warp pipe
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>4= 🚩
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>5= [Stage Complete]
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>6= [Game Over]
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>7= [Entering Area]
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>9= growing
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>0xA= shrinking
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>0xB= 💀
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>0xC= powering up
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>Lookup:Quest
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>0x0=1st
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>0x1=2nd
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>Display:
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>@Mode(0xh770)@Paused(0xh776)@Star(0xM79f_0xN79f_0xo79f_0xP79f_0xQ79f_0xR79f)@Powerup(0xh0756) Mario in @Digit(0xh75f_v1)-@Digit(0xh75c_v1)@Swimming(0xh704)@Status(0xhe), 🚶:@Digit(0xh75a_v1), @Quest(0xh7fc) Quest
+</span></code></pre></div>
+It breaks down into a series of Lookup objects, Format objects and one Display object. </p>
+<h2 id="macros">Macros</h2>
+<p>A macro converts a value into a user-friendly string. Macros are placed within a display string and will be replaced when the display string is evaluated. A macro starts with an <code>@</code>, then the name of the macro, an opening parenthesis, the value to evaluate, and a closing parenthesis.</p>
+<p><code>@Macro(0xh1234)</code> says read the byte at $1234, transform it using the <code>Macro</code> macro, and place the result in the display string where the macro had been.</p>
+<p>Parameters for each macro are constructed using a <a href="Value-Definition">value definition</a>.</p>
+<h3 id="lookups">Lookups</h3>
+<p>Lookups are defined like this: 
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Lookup:NameOfLookup
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>1=Text When 1
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>2=Text When 2
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>...
+</span></code></pre></div>
+When a display string references a Lookup, it's value will be located in the table and the associated text will be displayed.</p>
+<p><strong>NOTE</strong>: Values in the Lookup should be in decimal. If you want to use hex values, include a <code>0x</code> prefix. (i.e. <code>0x12=Eighteen</code>)</p>
+<p>You can also specify multiple values for a single text string:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>1-5,10=Text When These Values
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>*=Text For All Other Values
+</span></code></pre></div>
+In this example, the values 1, 2, 3, 4, 5, and 10 all map to the first text string.</p>
+<p>Anything that doesn't match an item defined in the lookup table will return the text associated with <code>*</code>. If <code>*</code> does not appear in the lookup table, no text will be returned if a value doesn't have an entry.</p>
+<h3 id="format">Format</h3>
+<p>Format tables are defined like this:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Format:Score
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>FormatType=VALUE
+</span></code></pre></div></p>
+<p>Begin with <code>Format:</code>, then the name of the Format converter. On the next line, give <code>FormatType=</code>, then one of the following:</p>
+<ul>
+<li><code>VALUE</code>: generic value, no leading zeroes. </li>
+<li><code>SCORE</code>/<code>POINTS</code>: generic value, padded with leading 0s to 6 digits.</li>
+<li><code>TIME</code>/<code>FRAMES</code>: value describes the number of frames elapsed, and will be turned into 00:00.00 by multiplying by 100 (hundredths of a second) and dividing by 60 (frames per second). If your system runs at something other than 60 fps, you'll have to do the conversion yourself and use <code>MILLISECS</code>.</li>
+<li><code>MILLISECS</code>: value describes the number of hundredths of a second elapsed, and will be turned into 00:00.00 </li>
+<li><code>SECS</code>: value describes the number of seconds elapsed, and will be turned into 00:00 </li>
+<li><code>MINUTES</code>: value describes the number of minutes elapsed, and will be turned into 0h00</li>
+<li><code>SECS_AS_MINS</code>: value describes the number of seconds elapsed, and will be turned into 0h00</li>
+<li><code>FLOAT1</code>-<code>FLOAT6</code>: formats a floating point number with the specified number of digits after the decimal</li>
+</ul>
+<h3 id="built-in-macros">Built-in macros</h3>
+<p>As of the 1.0 version of the DLL, you can use predefined macros for the most common formats. The following macros are now implicit:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Macro</th>
+<th style="text-align: center;">Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>@Number()</code></td>
+<td style="text-align: center;"><code>VALUE</code></td>
+<td>A generic value with no leading zeroes</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>@Score()</code></td>
+<td style="text-align: center;"><code>SCORE</code></td>
+<td>A generic value, padded with leading zeroes to six digits</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>@Centiseconds()</code></td>
+<td style="text-align: center;"><code>MILLISECS</code></td>
+<td>The number of hundreths of a second elapsed, and will be formatted as <code>00:00.00</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>@Seconds()</code></td>
+<td style="text-align: center;"><code>SECS</code></td>
+<td>The number of seconds elapsed, and will be formatted as <code>00:00</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>@Minutes()</code></td>
+<td style="text-align: center;"><code>MINUTES</code></td>
+<td>The number of minutes elapsed, and will be formatted as <code>0h00</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>@Float1()</code></td>
+<td style="text-align: center;"><code>FLOAT1</code></td>
+<td>A floating point number, formatted with one digit after the decimal</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>@Float2()</code></td>
+<td style="text-align: center;"><code>FLOAT2</code></td>
+<td>A floating point number, formatted with two digits after the decimal</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>@Float3()</code></td>
+<td style="text-align: center;"><code>FLOAT3</code></td>
+<td>A floating point number, formatted with three digits after the decimal</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>@Float4()</code></td>
+<td style="text-align: center;"><code>FLOAT4</code></td>
+<td>A floating point number, formatted with four digits after the decimal</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>@Float5()</code></td>
+<td style="text-align: center;"><code>FLOAT5</code></td>
+<td>A floating point number, formatted with five digits after the decimal</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>@Float6()</code></td>
+<td style="text-align: center;"><code>FLOAT6</code></td>
+<td>A floating point number, formatted with six digits after the decimal</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>@ASCIIChar()</code></td>
+<td style="text-align: center;">n/a</td>
+<td>Converts a value from 0x20-0x7F into a character using the ASCII character map. Other values will be converted to <code>?</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>@UnicodeChar()</code></td>
+<td style="text-align: center;">n/a</td>
+<td>Converts a value into a character using the 16-bit Unicode character map. Unknown values will be converted to <code>�</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="display">Display</h2>
+<p>Display is a string that gets shown in the 'Active Players' box on the front page and the 'Last Seen In' section of the player's profile.</p>
+<p>It is built by replacing any macros in the display string with text from a Lookup or formatted values from a Format converter. Each macro is identified by a single '@', which is followed by the name for the Lookup or Format (case sensitive!), and immediately after, in parenthesis, a value specifying what to send to that Lookup or Format object.</p>
+<p><code>Using @Powerup(0xh756)!</code> </p>
+<p>This means use the Lookup or Format that's called <code>Powerup</code>, and give it whatever 8-bit value is in the address 0x756. After converting, put the result in between "Using " and "!".</p>
+<p><strong>NOTE</strong>: Lookup/Format names are case sensitive and must exactly match the usage in the Display string: <code>@test(0x1234)</code> will not find <code>Format:Test</code></p>
+<p><strong>NOTE</strong>: Lookup/Format definitions cannot contain spaces before or after the name. <code>@test(0x1234)</code> will not find <code>Format:test</code> or <code>Format:   test</code></p>
+<h3 id="example-lookup-breakdown">Example Lookup Breakdown</h3>
+<ul>
+<li><code>@Mode(0xh770)</code> - Lookup for the address that shows if the game is in demo mode or a world has been completed.  </li>
+<li><code>@Paused(0xh776)</code> - Lookup for the address that shows if the game is paused (3 values are used, two of them are for pausing and unpausing).  </li>
+<li><code>@Star(0xM79f_0xN79f_0xo79f_0xP79f_0xQ79f_0xR79f)</code> - Lookup for the address of if Mario has Star invincibility. More on this later.  </li>
+<li><code>@Powerup(0xh756)</code> - Lookup for the address that show if Mario is Small, big or has fire power.  </li>
+<li><code>Mario in</code> - Static text to string lookup and format objects together.  </li>
+<li><code>@Digit(0xh75f_v1)</code> - <code>Digit</code> is a format object defined as a value. The address 0xh75f is the World minus 1 (because it is 0 based, as in it starts counting at 0). <code>_v1</code> Means + value 1. <code>_v+1</code> is also correct.  </li>
+<li><code>-</code> - More static text to split World and Level. as in the hyphen in World 1-1.  </li>
+<li><code>@Digit(0xh75c_v1)</code> - Another use of the <code>Digit</code> format object. This time It's looking up the stage. World 1-X.  </li>
+<li><code>@Swimming(0xh704)</code> - Lookup for the address that shows if the player is swimming.  </li>
+<li><code>@Status(0xhe)</code> - Lookup for the address that shows Mario's status, such as going through pipes.  </li>
+<li><code>, 🚶:</code> - More static text. 🚶 is a symbol for lives.  </li>
+<li><code>@Digit(0xh75a_v1)</code> - Third use of the <code>Digit</code> format object. This time it's checking the player lives address.  </li>
+<li><code>,</code> - Static text.  </li>
+<li><code>@Quest(0xh7fc)</code> A lookup to see if the player is in normal or on the 2nd quest, hardmode.  </li>
+<li><code>Quest</code> - Static Text.  </li>
+</ul>
+<h3 id="conditional-display-strings">Conditional Display Strings</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Display:
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>?0x 000085=0?Title Screen
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>?0xT00007c=1?Custom Map in @Landscape(0xH00016c)
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Playing Battle @Battle(0x 00007c*0.2) in @Landscape(0xH00016c)
+</span></code></pre></div>
+<p>The existing <code>Display:</code> marker is still used to indicate the start of the display block. If the next line starts with a question mark, it is considered to be a conditional display string. The portion of the line between the two question marks is the conditional clause. If the conditional clause evaluates true, then the remaining portion of the line is used as the display string. If it does not evaluate true, then processing proceeds to the next line. If it starts with a question mark, the same process repeats. If it does not start with a question mark, the entire line is used as the default display string.</p>
+<p><strong>NOTE</strong>: A default display string is required in case none of the conditional display strings match. If you only have conditional display strings, the script will appear to do nothing.</p>
+<p>Looking at this example, if the 16-bit value at $0085 is 0, the display string is <code>Title Screen</code>. If not, the next line is examined. If the 7th bit of $007C is 1, the display string is <code>Custom Map in @Landscape(0xH00016c)</code>. If not, the final line does not have a conditional clause and is used.</p>
+<p>Display strings associated with a conditional clause support all of the same syntax as the default display string. In this example, you can see the <code>@Landscape</code> lookup is used in both the conditional display string and the default display string. The lookup itself only has to be defined once.</p>
+<p>The conditional phrase supports all of the previously mentioned address accessors as well as AND (_) and OR (S) logic. Note that OR clauses still require a 'core' group, <a href="Alt-Groups">just like achievements</a>.</p>
+<ul>
+<li>
+<p><code>?0xH1234=32_0xH2345=0?and example</code></p>
+<p>if the 8-bit value at $1234 is 32 <em>and</em> the 8-bit value at $2345 is 0, display <code>and example</code></p>
+</li>
+<li>
+<p><code>?0xH1234=32S0xH2345=1S0xH2345=2?or example</code></p>
+<p>if the 8-bit value at $1234 is 32 <em>and</em> the 8-bit value at $2345 is 1 <em>or</em> 2, display <code>or example</code></p>
+</li>
+<li>
+<p><code>?0xH1234=32_0xH5678=33S0xH2345=1S0xH2345=2?and/or example</code></p>
+<p>if the 8-bit value at $1234 is 32 <em>and</em> the 8-bit value at $5678 is 33 <em>and</em> the 8-bit value at $2345 is 1 <em>or</em> 2, display <code>and/or example</code></p>
+</li>
+</ul>
+<p><strong>Pro-tip:</strong> Conditions can be created using the <a href="Achievement-Logic-Features">achievement editor</a>. Once you have your condition defined, use the <code>Copy Def</code> button to copy the achievement definition to the clipboard so you can paste it into the rich presence script.</p>
+<h2 id="limits">Limits</h2>
+<ul>
+<li>65,535 character limit for script  </li>
+<li>255 character limit for what is displayed  </li>
+<li>Unicode characters are allowed, but use count as more than 1 character towards the specified limits.</li>
+</ul>
+<h2 id="tips-and-tricks">Tips and Tricks</h2>
+<ul>
+<li>Comments can be added anywhere in the script. A double slash (<code>//</code>) indicates the remaining portion of the line should be ignored when processing the script. Note: comments still apply toward the script size limit.</li>
+<li>Lookup names can be as short as a single character if you need to squeeze in a few extra characters.</li>
+<li>Leading zeros can be removed from addresses (<code>0xh0001</code> can be shortened to <code>0xh1</code>).</li>
+<li>Turning all your values from hex into decimal will take up less characters.</li>
+<li>Unicode characters don't always "take up less space" they often take up to four system characters.</li>
+<li>Each <code>Lookup</code> or <code>Format</code> named mapping can be referenced multiple times with the same or different addresses. You can define a single <code>Format:Number FormatType=VALUE</code> instead of defining individual ones for Lives, Score, Level, etc.</li>
+<li>Putting spaces in your Lookups sometimes before or after can allow you to hide certain lookups when they are not needed, like how <code>@Pause</code>, <code>@Star</code>, <code>@Swimming</code>, and @Mode do. </li>
+</ul>
+<h3 id="value-properties">Value Properties</h3>
+<p>When using lookup and format objects <code>@object()</code> it's possible to combine and perform calculations. Macro parameters are <a href="Value-Definition">value definitions</a>, so you can use multiplication, addition, and even some logic to generate values that aren't directly available in memory.</p>
+<p><strong>Example</strong>
+<code>@Score(0xh28*10_0xh29*1000_0xh26*100000) points</code> </p>
+<p>This means use the Lookup or Format <code>Score</code>, and give it the sum of:<br />
+- the 8-bit value at 0x28 times 10, ADD<br />
+- the 8-bit value at 0x29 times 1000, ADD<br />
+- the 8-bit value at 0x26 times 100000  </p>
+<h2 id="unicode-standard-symbols">Unicode Standard Symbols</h2>
+<p>You can without doubt use these symbols in rich presence.</p>
+<p>▌▌=Paused<br />
+🔁=Continues<br />
+⏰=In Game Time/Game Clock<br />
+🔑=Keys<br />
+💣=Bombs<br />
+❤️ or ❤=In a game with hearts (e.g. Zelda) <br />
+💰=Money<br />
+🚩=Level/Stage   </p>
+<p>While making Rich Presence, devs need to be careful that they are communicating clearly. If you are using non-standard symbols they will make sense to you but could be entirely confusing to others. <strong>When using non-standard symbols, check them with someone else</strong> or a few people to see if the symbols you use make sense. If they don't, use better symbols, use text or use symbols alongside of text.</p>
+<p>For custom unicode/emoji <a href="http://shapecatcher.com/">ShapeCatcher</a> is an excellent resource, you can draw what you're looking for and an AI will find similar matches. Just be careful to not use unicode that <em>too obscure</em>, as they don't all display on all systems.</p>
+<p>Take note of community display preference:</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/32706333/56547116-a65a7c80-6539-11e9-951c-83b4f9930b3e.png" /></p>
+<h2 id="developing-rich-presence">Developing Rich Presence</h2>
+<p>The toolkit does not currently have an integrated Rich Presence editor, but you can test local changes before putting them on the server. Once you've started a game and the current Rich Presence has been downloaded from the server, you can find it in <code>RACache\Data\XXX-Rich.txt</code> where XXX is the game ID. </p>
+<p>The Rich Presence Monitor (openable from the RetroAchievments menu) reads this file and shows the current value every second while the window is open.</p>
+<p>If you make changes to the <code>XXX-Rich.txt</code> file, and reselect the menu option, it will read the new changes and allow you to immediate test them without applying the changes to the server. Continue to make changes and reselect the menu option until the script is behaving as you expect, then copy the contents to the server page to make it available to everyone else.</p>
+<p><strong>NOTE</strong>: The <code>XXX-Rich.txt</code> file is overwritten with the current server data each time the game is opened. As long as you still have the file open in an editor, you can always save your changes over the updated file after reopening the game.</p>
+<h3 id="parse-errors">Parse Errors</h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Enum</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-2</td>
+<td><code>INVALID_MEMORY_OPERAND</code></td>
+<td>A memory operand was expected and not found. Memory operands start with <code>0x</code>, then a size indicator. The most common causes of this are forgetting the <code>0x</code> or having an <code>_S</code> or <code>__</code> in the script.</td>
+</tr>
+<tr>
+<td>-3</td>
+<td><code>INVALID_CONST_OPERAND</code></td>
+<td>A lookup key could not be evaluated. The most common cause of this is using hex without the <code>0x</code> prefix. This may also occur on older versions of RetroArch when using CSV or range keys for lookups.</td>
+</tr>
+<tr>
+<td>-6</td>
+<td><code>INVALID_OPERATOR</code></td>
+<td>An unknown operator was encountered. The most common cause of this is using <code>!</code> instead of <code>!=</code></td>
+</tr>
+<tr>
+<td>-16</td>
+<td><code>MISSING_VALUE</code></td>
+<td>A macro was encountered without providing a value (i.e. <code>@Points</code> instead of <code>@Points(0xh1234)</code>)</td>
+</tr>
+<tr>
+<td>-18</td>
+<td><code>MISSING_DISPLAY_STRING</code></td>
+<td>The rich presence script did not contain a <code>Display:</code> element, or contained only conditional display strings</td>
+</tr>
+<tr>
+<td>-20</td>
+<td><code>RC_INVALID_VALUE_FLAG</code></td>
+<td>A non-combining flag is used in a non-trigger context. Combining flags are AddSource, SubSource, AddHits, AddAddress and AndNext.</td>
+</tr>
+</tbody>
+</table>
+<p>Additionally, if you see <code>[Unknown macro]</code>, that means the macro name could not be resolved. For example <code>@Points(0xh1234)</code> without defining <code>Format:Points</code> would generate <code>[Unknown macro]Points(0xh1234)</code>.</p>
+<p>This issue happens sometimes when a Rich Presence is created in the <code>&lt;GameID&gt;-Rich.txt</code> file in the <code>RACache&gt;Data</code> folder. In this case the issue can be fixed by adding an empty line at the start of the file.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "content.code.copy"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>
