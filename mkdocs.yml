@@ -5,6 +5,7 @@ repo_name: RADocs Repo
 nav:
   - Home: index.md
   - Design:
+    - How RA Works: design/howraworks.md
     - Achievement Design: design/design.md
     - Achievement Scoring: design/scoring.md
     - Difficulty Scale and Balance: design/balance.md
