@@ -16,6 +16,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://retroachievements.github.io/basics/overview/</loc>
+         <lastmod>2024-01-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://retroachievements.github.io/leaderboards/overview/</loc>
          <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
@@ -27,6 +32,26 @@
     </url>
     <url>
          <loc>https://retroachievements.github.io/ratools/overview/</loc>
+         <lastmod>2024-01-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://retroachievements.github.io/resources/condition-syntax/</loc>
+         <lastmod>2024-01-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://retroachievements.github.io/resources/emulator-hotkeys/</loc>
+         <lastmod>2024-01-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://retroachievements.github.io/resources/memory-sizes-diagram/</loc>
+         <lastmod>2024-01-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://retroachievements.github.io/resources/minimumver/</loc>
          <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
