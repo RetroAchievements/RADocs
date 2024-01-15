@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://retroachievements.github.io/basics/how-ra-works/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../overview/">
       
       
         <link rel="next" href="../../logic/overview/">
@@ -242,7 +242,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../overview/" class="md-tabs__link">
           
   
     
@@ -477,6 +477,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
@@ -504,6 +506,26 @@
             Basics
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -945,6 +967,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -984,6 +1014,86 @@
   
   <span class="md-ellipsis">
     Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/memory-sizes-diagram/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Sizes Diagram
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/condition-syntax/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Condition Syntax
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/emulator-hotkeys/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Emulator Hotkeys
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/minimumver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Minimum Required Versions for Logic Features
   </span>
   
 
@@ -1166,6 +1276,10 @@
 <strong>Possesion of hammer changes from not possessed to possessed</strong><br></p>
 <p>Here is what this achievement would look like in the Achievement Editor</p>
 <p><img alt="howraworks-example" src="../img/howraworks-example.png" /></p>
+<details>
+<summary>Syntax</summary>
+<p>0xH0561=21_0xH076e=2_0xM078b&gt;d0xM078b</p>
+</details>
 <p>In this example, address 0x0561 is the room ID and its value is 0x15 when the player is in the room with the hammer, address 0x076e is the area ID and its value is 0x02 when in Death Mountain where the hammer is located and Bit0 of address 0x078b indicates if the player has the hammer.  This bit changes from 0 to 1 when the player acquires the hammer, so the achievement checks for a frame where this bit is greater than it was the previous frame which is precisely when the hammer is obtained since bits can only be either 1 or 0.  If all three conditions are true on the same frame, the achievement is awarded.  This can only happen when the player obtains the hammer while in the hammer room in Death Mountain, not at some other time such as loading a save file.</p>
 <p>Every frame the player is playing the game, the RAM is being compared to the achievement logic to check if all conditions are true on that frame.  For this example achievement, all conditions can only be true on the same frame when a player is in the room and area where the hammer is obtained and the player obtains the hammer.  When that happens, all of the conditions defined in the logic will be true and the achievement will be immediately awarded.</p>
 <h3 id="leaderboard-and-rich-presence-code">Leaderboard and Rich Presence Code</h3>
@@ -1210,7 +1324,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "content.code.copy"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
