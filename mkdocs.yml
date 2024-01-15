@@ -5,7 +5,7 @@ repo_name: RADocs Repo
 nav:
   - Home: index.md
   - Basics:
-    - How RA Works: basics/howraworks.md
+    - How RA Works: basics/how-ra-works.md
   - Logic:
     - Overview: logic/overview.md
   - Leaderboards:
