@@ -1,10 +1,10 @@
 RetroAchievements (RA) provides users the ability to earn achievements in retro games from an RA achievement set.  It awards achievements by comparing a game’s memory, henceforth referred to as RAM, to achievement code written by an RA developer.  Achievement code, also known as logic, is a list of memory conditions chosen by the developer, that when all are simultaneously true on a single frame, will award an achievement.
 
-### What Is An Achievement Set?
+### What Is an Achievement Set?
 
 An achievement set is the compilation of individual achievements, rich presence and leaderboards for a particular game.  Achievements are comprised of achievement logic, a title, a description, a point value and a badge.  Additionally, a set must contain a Rich Presence script which provides site users information on where active players are in a game.  Sets may have leaderboards that track how well players perform in certain things in a game such as how quickly they can beat stages, how many points they can score and many other things.  RA users interface with all these components and subcomponents.  Each one is a vital part of the player experience.
 
-### What Is Achievement Code And How Is It Written?
+### What Is Achievement Code and How Is It Written?
 
 RA code is a custom text-based language that is interpreted by RA supporting emulators. This code is constructed by developers, with them having the ability to choose between two alternative toolkits that best fit their personal experience. The Achievement Editor in the RAIntegration toolkit requires no knowledge of coding, and can be compared to finding addresses in emulation-related tools such as Game Genie and Action Replay. On the other hand, RATools is a standalone executable designed for developers who find it more comfortable to write in a scripting language to develop their achievement set. Both the Achievement Editor and RATools produce code that is used for all achievements, leaderboards and Rich Presence.
 
