@@ -1,0 +1,2733 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://retroachievements.org/basics/meminsp/">
+      
+      
+        <link rel="prev" href="../basics/">
+      
+      
+        <link rel="next" href="../editor/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
+    
+    
+      
+        <title>Memory Inspector Overview - RA Dev Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#memory-inspector-dialog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RA Dev Docs" class="md-header__button md-logo" aria-label="RA Dev Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RA Dev Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Memory Inspector Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/RetroAchievements/RADocs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RADocs Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../design/design/" class="md-tabs__link">
+          
+  
+    
+  
+  Design
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../basics/" class="md-tabs__link">
+          
+  
+    
+  
+  Basics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../logic/overview/" class="md-tabs__link">
+          
+  
+    
+  
+  Logic
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../support/overview/" class="md-tabs__link">
+          
+  
+    
+  
+  Support
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../richpresence/rp/" class="md-tabs__link">
+          
+  
+    
+  
+  Rich Presence
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../leaderboards/lb/" class="md-tabs__link">
+          
+  
+    
+  
+  Leaderboards
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../badges/badgeiconcreation/" class="md-tabs__link">
+          
+  
+    
+  
+  Badges
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../resources/sites/" class="md-tabs__link">
+          
+  
+    
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../examples/examples/" class="md-tabs__link">
+          
+  
+    
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RA Dev Docs" class="md-nav__button md-logo" aria-label="RA Dev Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    RA Dev Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/RetroAchievements/RADocs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RADocs Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Design
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Achievement Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/scoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Achievement Scoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/balance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Difficulty Scale and Balance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/roadmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Set Development Roadmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Achievement Creation Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Memory Inspector Overview
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Memory Inspector Overview
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#memory-inspector-dialog" class="md-nav__link">
+    Memory Inspector Dialog
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Inspector Dialog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-new-search" class="md-nav__link">
+    1. New Search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-filter" class="md-nav__link">
+    2. Filter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-results" class="md-nav__link">
+    3. Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-code-notes" class="md-nav__link">
+    4. Code Notes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-memory-view" class="md-nav__link">
+    5. Memory View
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-bookmarks" class="md-nav__link">
+    Memory Bookmarks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-data-in-the-memory-viewer" class="md-nav__link">
+    Reading Data in the Memory Viewer
+  </a>
+  
+    <nav class="md-nav" aria-label="Reading Data in the Memory Viewer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decimal-binary-and-hexadecimal-notations" class="md-nav__link">
+    Decimal, Binary, and Hexadecimal Notations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-viewer-modes" class="md-nav__link">
+    Memory Viewer Modes
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Viewer Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#8-bit-mode" class="md-nav__link">
+    8-Bit Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-and-32-bit-mode" class="md-nav__link">
+    16 and 32-bit Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endianness" class="md-nav__link">
+    Endianness
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-sizes-smaller-than-8-bit" class="md-nav__link">
+    Working with Sizes Smaller Than 8-Bit
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with Sizes Smaller Than 8-Bit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-bits" class="md-nav__link">
+    Single Bits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upper4-and-lower4" class="md-nav__link">
+    Upper4 and Lower4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-sizes-diagram" class="md-nav__link">
+    Memory Sizes Diagram
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Achievement Editor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ramdigging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAM Digging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codenotes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../id/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Game Identification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Logic
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Logic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/resetif/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reset If
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/resetnextif/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reset Next If
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/pauseif/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pause If
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/andnextornext/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    And Next and Or Next
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/addsource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Add Source
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/subsource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sub Source
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/addhitssubhits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Add Hits and Sub Hits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/addaddress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Add Address
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/measured/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Measured
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/trigger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trigger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/altgroups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Alt Groups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/bitcount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BitCount Size
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/deltas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Delta Values
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/hitcounts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hit Counts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/prior/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prior Values
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/combiningflags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Combining Flags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/syntax/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Condition Syntax
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logic/ratools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RATools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Support
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Support
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/cheats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheat Protection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demo Protection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/bios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BIOS Protection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/consoletips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Console Specific Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/regional/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regional Compatibility
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Rich Presence
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Rich Presence
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../richpresence/rp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rich Presence Creation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Leaderboards
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Leaderboards
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leaderboards/lb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Leaderboard Creation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Badges
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Badges
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../badges/badgeiconcreation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Badge and Icon Creation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/sites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helpful Sites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary of Developer Terms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/minimumver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Minimum Versions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/memmapping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Systems Memory Mapping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/codenotesenmasse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code Notes En Masse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/value/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Value Definition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/watcher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Address Watcher
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ex1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ex2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ex3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ex4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ex5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ex6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/templates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Achievement Templates
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#memory-inspector-dialog" class="md-nav__link">
+    Memory Inspector Dialog
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Inspector Dialog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-new-search" class="md-nav__link">
+    1. New Search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-filter" class="md-nav__link">
+    2. Filter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-results" class="md-nav__link">
+    3. Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-code-notes" class="md-nav__link">
+    4. Code Notes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-memory-view" class="md-nav__link">
+    5. Memory View
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-bookmarks" class="md-nav__link">
+    Memory Bookmarks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-data-in-the-memory-viewer" class="md-nav__link">
+    Reading Data in the Memory Viewer
+  </a>
+  
+    <nav class="md-nav" aria-label="Reading Data in the Memory Viewer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decimal-binary-and-hexadecimal-notations" class="md-nav__link">
+    Decimal, Binary, and Hexadecimal Notations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-viewer-modes" class="md-nav__link">
+    Memory Viewer Modes
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Viewer Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#8-bit-mode" class="md-nav__link">
+    8-Bit Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-and-32-bit-mode" class="md-nav__link">
+    16 and 32-bit Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endianness" class="md-nav__link">
+    Endianness
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-sizes-smaller-than-8-bit" class="md-nav__link">
+    Working with Sizes Smaller Than 8-Bit
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with Sizes Smaller Than 8-Bit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-bits" class="md-nav__link">
+    Single Bits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upper4-and-lower4" class="md-nav__link">
+    Upper4 and Lower4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-sizes-diagram" class="md-nav__link">
+    Memory Sizes Diagram
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Memory Inspector Overview</h1>
+
+<p>Here is an overview of the <strong>Memory Inspector</strong> and its features. This tool can be found on "RetroAchievements" menu on any emulator integrated with RA.</p>
+<p><strong>See also</strong>: <a href="Tips-and-Tricks#memory-digging-tips">Memory Digging Tips</a>.</p>
+<ul>
+<li><a href="#memory-inspector-dialog">Memory Inspector Dialog</a></li>
+<li><a href="#1-new-search">1. New Search</a></li>
+<li><a href="#2-filter">2. Filter</a></li>
+<li><a href="#3-results">3. Results</a></li>
+<li><a href="#4-code-notes">4. Code Notes</a></li>
+<li><a href="#5-memory-view">5. Memory View</a></li>
+<li><a href="#memory-bookmarks">Memory Bookmarks</a></li>
+<li><a href="#reading-data-in-the-memory-viewer">Reading Data in the Memory Viewer</a></li>
+<li><a href="#decimal-binary-and-hexadecimal-notations">Decimal, Binary, and Hexadecimal Notations</a></li>
+<li><a href="#memory-viewer-modes">Memory Viewer Modes</a><ul>
+<li><a href="#8-bit-mode">8-Bit Mode</a></li>
+<li><a href="#16-and-32-bit-mode">16 and 32-Bit Mode</a></li>
+</ul>
+</li>
+<li><a href="#working-with-sizes-smaller-than-8-bit">Working with Sizes Smaller Than 8-Bit</a><ul>
+<li><a href="#single-bits">Single Bits</a></li>
+<li><a href="#upper4-and-lower4">Upper4 and Lower4</a></li>
+</ul>
+</li>
+<li><a href="#memory-sizes-diagram">Memory Sizes Diagram</a></li>
+</ul>
+<h2 id="memory-inspector-dialog">Memory Inspector Dialog</h2>
+<p><img alt="memoryinspector-num" src="https://user-images.githubusercontent.com/32680403/82169863-05dfa480-9880-11ea-8bb0-7873ef2f9d53.png" /></p>
+<h3 id="1-new-search">1. New Search</h3>
+<p>This is the first thing you must do when you're looking for something in memory. </p>
+<p>The first drop down allows you to quick select All memory, System RAM, or Cartridge RAM. The field below the first drop down lets you type in a custom range (i.e. 0x10000-0x100FF).</p>
+<p>The second drop down specifies the size of the data you're interested in finding.</p>
+<p>The <code>Reset</code> button clears out any previously captured results (part 3 of the dialog) and captures the current memory state.</p>
+<h3 id="2-filter">2. Filter</h3>
+<p>Filters the memory state in an attempt to locate a specific memory address.</p>
+<p>The first drop down allows you to specify the comparison to use. The second drop down is what you're comparing against. Most of the time you're going to be filtering on <code>!= Last Value</code>, which eliminates any results where the memory has not changed.</p>
+<p>The available comparisons are:</p>
+<ul>
+<li><code>Constant</code> - comparison is made against the value entered in the field below the drop down.</li>
+<li><code>Last Value</code> - comparison is made against the value captured by the last applied filter, or the initial value if no filter has been applied</li>
+<li><code>Last Value Plus</code> - comparison is made against the Last Value plus the value entered in the field below the drop down. If the value were 3, the comparison would me made against a number which is three higher than the Last Value for each value captured by the last applied filter.</li>
+<li><code>Last Value Minus</code> - the same as Last Value Plus, except the value entered in the field below the drop down is subtracted from each value captured by the last applied filter.</li>
+<li><code>Initial Value</code> - comparison is made against the value captured when the New Search was begun.</li>
+</ul>
+<p>The <code>Filter Once</code> button immediately applies the selected filter and updates the Results.</p>
+<p>The <code>Continuous Filter</code> button applies the selected filter repeatedly until stopped. The fewer the results, the more frequently the filter is applied. The filter is only applied once every N ms, where N is the number of results / 1000. If there are less than 1000 results, it's applied every frame. If there are 50000 results, it's applied every 500ms (twice a second). If there are 1000000 results, it's only applied every 10 seconds.</p>
+<h3 id="3-results">3. Results</h3>
+<p>As filtering is applied, the list of potential matches will appear here.</p>
+<p>On the left side is information about the results, including the number of matches, the filter applied, and how many filters have been applied. If you believe you have applied a filter incorrectly, or the filter results in no matches, you can use the <code>&lt;&lt;</code> button to return to the previous set of results. You can do this all the way back to the initial results. Similarly, you can use the <code>&gt;&gt;</code> button to return to results you have backed out of. Once you apply a new filter, the forward filters are discarded and the <code>&gt;&gt;</code> button is disabled.</p>
+<p>Below the result information are two buttons. The first allows you to manually remove the selected items from the result set. You can use Ctrl and Shift to select multiple items. The second lets you create a bookmark for an item in the result set. It will appear in the Bookmarks dialog.</p>
+<p><img alt="memoryinspector-filter jpg" src="https://user-images.githubusercontent.com/32680403/82170020-7f779280-9880-11ea-84aa-ab2435f294e2.png" /></p>
+<p>The items in the result set show the address of the match, the current value, and a brief description of the memory at the address. If a code note exists for the address, it will be shown. Otherwise, a general classification of the address will be shown.</p>
+<p>Additionally, items in the result set can be colored.</p>
+<ul>
+<li>Red - the item does not currently match the filter</li>
+<li>Grey - the item does currently match the filter, but at some point since the filter was applied it did not match.</li>
+<li>Green - the item is bookmarked</li>
+<li>Blue - the item has a code note</li>
+</ul>
+<p>Clicking on a row will set the selected address to the associated item.</p>
+<h3 id="4-code-notes">4. Code Notes</h3>
+<p>Provides detailed information about the selected address, and allows the user to annotate addresses found by the search process. Try to keep your descriptions simple and clear, so they can be easily understood. Clear notes are important for debugging if a problem with an achievement occurs.</p>
+<p>The text field shows the currently selected address from the memory view (part 5 of the dialog). You can manually type in any address, or use the up and down arrows to jump to the next or previous address that have a code note.</p>
+<p>Just to the right of the text field is a button that opens the Code Notes dialog, which allows you to browse and search through the code notes.</p>
+<p>Below the text field is a button that will create a bookmark from the selected address.</p>
+<p>The large text area is where you can modify the code note for the selected address. NOTE: the changes are not saved unless you press the Save Note button. If you change the selected address without saving, the changes will be lost.</p>
+<p><code>Save Note</code> and <code>Delete</code> immediately attempt to update the server - either with the modified note text, or by clearing out the note text.</p>
+<h3 id="5-memory-view">5. Memory View</h3>
+<p>Allows direct browsing of the memory. The memory updates once per frame as the emulator runs.</p>
+<p>The currently selected address appears in red. Addresses with code notes show up blue, and addresses associated to bookmarks show up green.</p>
+<p>You can click on any piece of data in the memory viewer to jump to the associated address. You can also use the keyboard to navigation around in memory (up/down/left/right/pgup/pgdn/home/end).</p>
+<p>When the memory viewer is focused, a cursor will be visible. You can type any hexadecimal character to change the character at the cursor to another value. This immediately changes the value for the emulator, and may cause unexpected behavior, so use at your own risk. Additionally, modifying memory (through any of the tools) prevents achievements from being unlocked on the server as an anti-cheat mechanism.</p>
+<h3 id="memory-bookmarks">Memory Bookmarks</h3>
+<p>You can open the Memory Bookmarks dialog from the RetroAchievements menu. It will also automatically open when adding a bookmark from either of the buttons on the Memory Inspector dialog. </p>
+<p><img alt="memoryinspector-bookmark jpg" src="https://user-images.githubusercontent.com/32680403/82172473-7fc75c00-9887-11ea-82f0-f1d9c7814180.png" /></p>
+<p>With this, you can view multiple designated addresses at once instead of having to shuffle around in the Inspector. Bookmarked addresses will show in the Memory Inspector as green.</p>
+<p>If you double-click on an address, you can move straight to that address in the Memory Inspector.</p>
+<p>The bookmarks can be renamed by clicking their description. This does not update the code note for the associated address.</p>
+<p>You can change the size or format of a bookmark by clicking on the field and selecting a new value from the dropdown. Clicking on the value field will allow you to enter a new value for the bookmark. It will automatically be written to the memory.</p>
+<p>From here you can also Freeze any bookmarks. This is helpful for things like health or consumables. Keep in mind, freezing occurs <strong>1 frame after gameplay.</strong> This means that even when frozen, the value will change for at least one frame before returning to the frozen value. Frozen bookmarks will be displayed as yellow.</p>
+<h2 id="reading-data-in-the-memory-viewer">Reading Data in the Memory Viewer</h2>
+<h3 id="decimal-binary-and-hexadecimal-notations">Decimal, Binary, and Hexadecimal Notations</h3>
+<p>To work well with the Memory Viewer, it's important to understand at least the basics of binary and hexadecimal numeral notations. Here are good sources of information about this matter without going into extreme details:</p>
+<ul>
+<li>https://simple.wikipedia.org/wiki/Binary_number</li>
+<li>https://simple.wikipedia.org/wiki/Hexadecimal_numeral_system</li>
+</ul>
+<p>The digits used in <strong>binary system</strong> are <code>0</code> and <code>1</code>. A <em>binary digit</em> is also known as <strong>bit</strong>. Eight bits is also known as one <strong>byte</strong>.</p>
+<p>The digits used in <strong>hexadecimal system</strong> are <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code>, <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code>, <code>E</code> and <code>F</code>. The <em>hexadecimal notation</em> is also known as <strong>hex</strong>.</p>
+<p>The main reasons for the existence of these 2 notations, besides the traditional decimal notation, are:</p>
+<ul>
+<li>Decimal notation is what humans understand.</li>
+<li>Binary notation is what computers "understand".</li>
+<li>Hexadecimal notation can be seen as a middle ground between binary and decimal. Because a single hexadecimal digit represents 4 bits, then a shorter and more understandable notation for humans to work in a way that the computer "understands".</li>
+</ul>
+<p>The table below shows the different notations for equivalent values.</p>
+<table>
+<thead>
+<tr>
+<th>Decimal</th>
+<th>Hexadecimal</th>
+<th>Binary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code>0x0</code></td>
+<td><code>0000</code></td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td><code>0x1</code></td>
+<td><code>0001</code></td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td><code>0x2</code></td>
+<td><code>0010</code></td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td><code>0x3</code></td>
+<td><code>0011</code></td>
+</tr>
+<tr>
+<td><code>4</code></td>
+<td><code>0x4</code></td>
+<td><code>0100</code></td>
+</tr>
+<tr>
+<td><code>5</code></td>
+<td><code>0x5</code></td>
+<td><code>0101</code></td>
+</tr>
+<tr>
+<td><code>6</code></td>
+<td><code>0x6</code></td>
+<td><code>0110</code></td>
+</tr>
+<tr>
+<td><code>7</code></td>
+<td><code>0x7</code></td>
+<td><code>0111</code></td>
+</tr>
+<tr>
+<td><code>8</code></td>
+<td><code>0x8</code></td>
+<td><code>1000</code></td>
+</tr>
+<tr>
+<td><code>9</code></td>
+<td><code>0x9</code></td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>10</code></td>
+<td><code>0xA</code></td>
+<td><code>1010</code></td>
+</tr>
+<tr>
+<td><code>11</code></td>
+<td><code>0xB</code></td>
+<td><code>1011</code></td>
+</tr>
+<tr>
+<td><code>12</code></td>
+<td><code>0xC</code></td>
+<td><code>1100</code></td>
+</tr>
+<tr>
+<td><code>13</code></td>
+<td><code>0xD</code></td>
+<td><code>1101</code></td>
+</tr>
+<tr>
+<td><code>14</code></td>
+<td><code>0xE</code></td>
+<td><code>1110</code></td>
+</tr>
+<tr>
+<td><code>15</code></td>
+<td><code>0xF</code></td>
+<td><code>1111</code></td>
+</tr>
+</tbody>
+</table>
+<p>More facts about the different number notations:</p>
+<ul>
+<li>To indicate a value is written in hexadecimal, the prefix <code>0x</code> is used: <code>0x10 = 16</code>, <code>10 = 10</code>.</li>
+<li>Two hex digits represent 8 bits and can range from <code>0</code> to <code>255</code>. </li>
+<li>Four hex digits represent 16 bits and can range <code>0</code> to <code>65535</code>.</li>
+<li>Eight hex digits represent 32 bits and can range from <code>0</code>to <code>4294967295</code>.</li>
+</ul>
+<h3 id="memory-viewer-modes">Memory Viewer Modes</h3>
+<p>The bottom part of the Memory Inspector is what we call the Memory Viewer:</p>
+<p><img alt="memviewer" src="https://user-images.githubusercontent.com/8508804/52494138-59127400-2bb4-11e9-9a1f-6172bba6ee9f.png" /></p>
+<p>You can see data in Memory Viewer using 8, 16 or 32-bit modes.</p>
+<h4 id="8-bit-mode">8-Bit Mode</h4>
+<p>By default, the Memory Viewer shows data in 8-bit mode. This displays each byte of memory as a separate two-character hexadecimal value. And each byte has its own address.</p>
+<p>Sixteen bytes are shown per line. The address of a byte can be determined by adding the row index (displayed to the left of the viewer) to the column index (displayed above the viewer). Using the <a href="#memory-viewer-modes">image above</a> as an example, the cursor is at <code>0x002a7</code> (<code>0x002a0</code> + <code>7</code>).</p>
+<h4 id="16-and-32-bit-mode">16 and 32-bit Mode</h4>
+<p>Before we talk about 16-bit mode and 32-bit mode, it's important to know about endianness:</p>
+<blockquote>
+<h4 id="endianness">Endianness</h4>
+<p>Endianness describes the order in which a sequence of bytes are stored in computer systems memory. The two most common types are: <strong>Big-Endian</strong> (also known as BE) and <strong>Little-Endian</strong> (also known as LE).</p>
+<p>In the <strong>Big-Endian</strong> order the "big end" of the number (most significant value in the sequence) is stored first (placed at the lowest address). In the image below you see the number <code>0x12345678</code> stored at the address <code>0x100</code> in the big-endian order. Notice that the most significant byte <code>0x12</code> is at the address <code>0x100</code>:</p>
+<p><img alt="bigendian" src="https://user-images.githubusercontent.com/8508804/52626678-db43b680-2e9a-11e9-89e2-19d379359226.png" /></p>
+<p>In the <strong>Little-Endian</strong> order the "little end" of the number (least significant value in the sequence) is stored first. In the image below you see the number <code>0x12345678</code> stored at the address <code>0x100</code> in the little-endian order. Notice that the least significant byte <code>0x78</code> is at the address <code>0x100</code>:</p>
+<p><img alt="littleendian" src="https://user-images.githubusercontent.com/8508804/52626680-db43b680-2e9a-11e9-83f2-432fd46dc608.png" /></p>
+</blockquote>
+<p>Values that need more then 8-bits (in other words: larger than 255) have to be stored in multiple bytes. However, the emulated systems we use store multi-byte values in little-endian order.</p>
+<p>In the <a href="#memory-viewer-modes">image of the Memory Viewer above</a> you can see that at address <code>0x0002c0</code> we have the hex value <code>ce</code> and in <code>0x0002c1</code> the value is <code>39</code>. When you switch the viewer to 16-bit mode, the <code>ce</code> and <code>39</code> values are grouped at <code>0x0002c0</code> and get displayed as <code>39ce</code>. This happens because it automatically groups every two bytes and displays them as 16-bit hex values.</p>
+<p><strong>NOTE</strong>: While 16-bit values are usually aligned to even addresses, that's not always the case. There's actually a non-displayed 16-bit value at <code>0x0002c1</code>. Since the value at <code>0x0002c1</code> is <code>39</code> and the value at <code>0x0002c2</code> is <code>29</code>, the 16-bit value at <code>0x0002c1</code> address is <code>0x2939</code>.</p>
+<p>Similarly, in 32-bit mode, the four bytes from <code>0x0002c0</code> to <code>0x0002c3</code> are displayed as a single 32-bit value <code>0x252939ce</code> at address <code>0x0002c0</code>, but there are also 32-bit values at <code>0x0002c1</code>, <code>0x0002c2</code>, and <code>0x0002c3</code>.</p>
+<h3 id="working-with-sizes-smaller-than-8-bit">Working with Sizes Smaller Than 8-Bit</h3>
+<p>In addition to the 8-bit, 16-bit and 32-bit sizes described above, there are additional sizes that can be used when writing achievements (in the Achievement Editor).</p>
+<h4 id="single-bits">Single Bits</h4>
+<p>In the memory viewer when an 8-bit address is selected you will see something like the image below (in the image: a byte with the value <code>6f</code> is selected; the bits are highlighted with an orange circle):</p>
+<p><img alt="bitfields" src="https://user-images.githubusercontent.com/8508804/52825269-39db8100-30a3-11e9-85b0-f2a2da109954.png" /></p>
+<p>It is very common in games to store important information as a single bit. As a bit can only have two possible values (<code>1</code> or <code>0</code>), sometimes it's used to mean "yes" or "no", "on" or "off", "have item" or "no item", etc. Some games, specially those with limited memory space, use bit switches a lot.</p>
+<p><strong>Important:</strong> You can refer to each one of those bits individually in the Achievement Editor.</p>
+<p>Common meaning of bit switches in a game memory:</p>
+<ul>
+<li>have an item</li>
+<li>button pressed (very common)</li>
+<li>area explored</li>
+<li>in game trigger activated</li>
+<li>cheat activated</li>
+<li>in demo mode</li>
+</ul>
+<p>In the memory viewer you can only input hex values, then it's important to know equivalence of values between hex and binary notations. You can see the table in the "<a href="#decimal-binary-and-hexadecimal-notations">Decimal, Binary and Hexadecimal notations</a>" section, but the usual is to use a calculator (the default calculator on MS Windows on the programmer view can do the job).</p>
+<h4 id="upper4-and-lower4">Upper4 and Lower4</h4>
+<p><strong>Upper4</strong> is the upper four bits of a byte (bit: 7, 6, 5, 4), displayed as a single hexadecimal character. <strong>Lower4</strong> is the lower four bits of a byte (bit: 3, 2, 1, 0), displayed as a single hexadecimal character.</p>
+<p>Looking at the <a href="#memory-sizes-diagram">memory size diagram</a> below, a byte at address <code>0x00a274</code> is selected (value <code>0x23</code>). The first character, <code>2</code> is the Upper4 value. The second character <code>3</code> is the Lower4 value.</p>
+<p>Occasionally you will only be interested working with a single hexadecimal digit. Using the <a href="#memory-sizes-diagram">memory size diagram</a> as an example, an achievement condition where <code>Upper4 0x00a274 = 0x2</code> would be true. A condition where <code>Lower4 0x00a274 = 0x3</code> would be true.</p>
+<h3 id="memory-sizes-diagram">Memory Sizes Diagram</h3>
+<p><img alt="memsizes" src="https://user-images.githubusercontent.com/32680403/45276439-8cbf6580-b47f-11e8-803c-7e7e391a9e55.png" /></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "content.code.copy"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>
