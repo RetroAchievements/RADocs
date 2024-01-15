@@ -1,1 +1,77 @@
-placeholder - WIP
+### WIP Outline of this section
+Some items in the list are just notes/reminders. Each section should have multiple examples of the flags/features being used
+
+- Flags
+  - Blank/"No Flag"
+  - Pause If
+    - Pause Priority
+    - Pause Locks
+    - When to use instead of Reset If
+  - Reset If:
+    - When to use instead of Pause If
+  - Reset Next If:
+    - When to use instead of conditional resets in Alt groups
+  - Add Source:
+    - Totals need to be in hex
+    - Delta ranges
+  - Sub Source:
+  - Add Hits:
+  - Sub Hits:
+  - Add Address:
+    - Pointers
+    - Indexes
+  - And Next:
+    - Multiconditional hits
+    - Multiconditional resets/pauses
+  - Or Next:
+    - When to use instead of Alt Groups
+  - Measured and Measured If:
+  - Trigger:
+- Chains:
+- Tips and Tricks:
+  - Using Sub Source before Add Source with a BitCount to ignore bits
+  - Using Trigger and Measured together
+- Features:
+  - Hit Counts:
+    - Checkpoint hits
+    - Timers
+  - Alt Groups:
+     - When to use instead of Or Next
+- Types:
+  - Memory:
+  - Value:
+  - Delta:
+  - Prior:
+  - BCD:
+  - Floats:
+  - Invert:
+- Memory Sizes:
+  - Standard Sizes:
+    - 8-Bit
+    - 16-Bit
+    - 24-Bit
+    - 32-Bit
+  - Bits and BitCount:
+    - bit0 and odd numbered values
+  - Lower4 and Upper4:
+    - ASCII scores (30 31 32 instead of 012)
+  - Big Endian:
+    - 16-Bit BE
+    - 24-Bit BE
+    - 32-Bit BE
+  - Floats:
+  - MBF32:
+    - MBF32 LE
+- Comparisons:
+  - Standard Comparisons:
+    - `= (equal)`
+    - `< (less than)`
+    - `<= (less than or equal to)`
+    - `> (greater than)`
+    - `>= (greater than or equal to)`
+    - `!= (not equal to)`
+  - Flag-Specific Comparisons:
+    - `* (multiply)`
+    - `/ (divide)`
+    - `& (bitwise AND)`
+    - `^ (XOR)`

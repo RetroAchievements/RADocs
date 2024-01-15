@@ -1,0 +1,1 @@
+![memory-sizes-diagram](./img/memory-sizes-diagram.png)

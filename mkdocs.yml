@@ -5,6 +5,7 @@ repo_name: RADocs Repo
 nav:
   - Home: index.md
   - Basics:
+    - Overview: basics/overview.md
     - How RA Works: basics/how-ra-works.md
   - Logic:
     - Overview: logic/overview.md
@@ -18,6 +19,10 @@ nav:
     - Overview: badgecreation/overview.md
   - Resources:
     - Overview: resources/overview.md
+    - Memory Sizes Diagram: resources/memory-sizes-diagram.md
+    - Condition Syntax: resources/condition-syntax.md
+    - Emulator Hotkeys: resources/emulator-hotkeys.md
+    - Minimum Required Versions for Logic Features: resources/minimumver.md
   - RATools:
     - Overview: ratools/overview.md
 
@@ -52,6 +57,7 @@ theme:
     - navigation.tabs.sticky
     - navigation.indexes
     - content.code.copy
+    - content.code.annotate 
 
 plugins:
   - search
