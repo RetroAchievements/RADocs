@@ -1,0 +1,99 @@
+```
+nav:
+  - Home: index.md
+  - Basics:
+    - How RA Works: design/howraworks.md
+    - Planning an Achievement Set:
+      - Deciding on Game Version:
+        - Hash and Patch Info:
+      - Research:
+      - Difficulty Scale and Balance:
+      - Achievement Scoring:
+      - Set Development Roadmap:
+    - The RA Toolkit:
+      - Setting Up Each Emulator:
+        - Recommended Cores and BIOS:
+      - Memory Inspector Overview:
+      - Code Notes:
+      - Asset List:
+      - Asset Editor:
+        - Achievements:
+        - Leaderboards:
+        - Rich Presence:
+      - Bookmarks:
+    - RAM Digging:
+      - Finding Bitflags:
+      - Finding Pointers:
+      - Finding Floats:
+  - Logic:
+    - Overview: logic/overview.md
+    - Flags:
+      - Blank:
+      - Pause If:
+      - Reset If:
+      - Reset Next If:
+      - Add Source:
+      - Sub Source:
+      - Add Hits:
+      - Sub Hits:
+      - Add Address:
+      - And Next:
+      - Or Next:
+      - Measured and Measured If:
+      - Trigger:
+    - Chains:
+    - Tips and Tricks:
+    - Features:
+      - Hit Counts:
+      - Alt Groups:
+      - Highlighter:
+    - Types:
+      - Memory:
+      - Value:
+      - Delta:
+      - Prior:
+      - BCD:
+      - Floats:
+      - Invert:
+    - Memory Sizes:
+      - Standard Sizes:
+      - Bits and BitCount:
+      - Lower4 and Upper4:
+      - Big Endian:
+      - Floats:
+      - MBF32:
+    - Comparisons:
+      - Standard Comparisons:
+      - Flag-Specific Comparisons:
+  - Leaderboards:
+    - Overview: leaderboards/overview.md
+  - Rich Presence:
+    - Overview: richpresence/overview.md
+  - Support:
+    - Overview: support//overview.md
+    - Protection:
+      - Demo Protection:
+      - Save Protection:
+      - Password Protection:
+      - Cheat Protection:
+      - Multiplayer Protection:
+      - BIOS Protection:
+      - Dipswitches:
+    - Compatibility Testing:
+      - Regional Compatibility:
+      - Revision Compatibility:
+      - QoL Hacks:
+  - Badge Creation:
+    - Overview: badgecreation/overview.md
+  - Resources:
+    - Overview: resources/overview.md
+    - Syntax Chart:
+    - Emulator Hotkeys for Developers:
+    - Console-Specific Tips:
+    - Minimum Required Versions for Logic Features:
+    - Game Identification:
+    - Helpful Sites:
+    - Glossary of Developer Terms:
+  - RATools:
+    - Overview: ratools/overview.md
+```

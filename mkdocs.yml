@@ -4,71 +4,22 @@ repo_url: https://github.com/RetroAchievements/RADocs/
 repo_name: RADocs Repo
 nav:
   - Home: index.md
-  - Design:
-    - How RA Works: design/howraworks.md
-    - Achievement Design: design/design.md
-    - Achievement Scoring: design/scoring.md
-    - Difficulty Scale and Balance: design/balance.md
-    - Set Development Roadmap: design/roadmap.md
-    - Achievement Creation Tips: design/tips.md
   - Basics:
-    - Basics: basics/basics.md
-    - Memory Inspector Overview: basics/meminsp.md
-    - Achievement Editor: basics/editor.md
-    - RAM Digging: basics/ramdigging.md
-    - Code Notes: basics/codenotes.md
-    - Game Identification: basics/id.md
+    - How RA Works: basics/howraworks.md
   - Logic:
     - Overview: logic/overview.md
-    - Reset If: logic/resetif.md
-    - Reset Next If: logic/resetnextif.md
-    - Pause If: logic/pauseif.md
-    - And Next and Or Next: logic/andnextornext.md
-    - Add Source: logic/addsource.md
-    - Sub Source: logic/subsource.md
-    - Add Hits and Sub Hits: logic/addhitssubhits.md
-    - Add Address: logic/addaddress.md
-    - Measured: logic/measured.md
-    - Trigger: logic/trigger.md
-    - Alt Groups: logic/altgroups.md
-    - BitCount Size: logic/bitcount.md
-    - Delta Values: logic/deltas.md
-    - Hit Counts: logic/hitcounts.md
-    - Prior Values: logic/prior.md
-    - Combining Flags: logic/combiningflags.md
-    - Logic Tips: logic/tips.md
-    - Condition Syntax: logic/syntax.md
-    - RATools: logic/ratools.md
-  - Support:
-    - Overview: support/overview.md
-    - Cheat Protection: support/cheats.md
-    - Demo Protection: support/demo.md
-    - BIOS Protection: support/bios.md
-    - Console Specific Tips: support/consoletips.md
-    - Regional Compatibility: support/regional.md
-  - Rich Presence:
-    - Rich Presence Creation: richpresence/rp.md
   - Leaderboards:
-    - Leaderboard Creation: leaderboards/lb.md
-  - Badges:
-    - Badge and Icon Creation: badges/badgeiconcreation.md
+    - Overview: leaderboards/overview.md
+  - Rich Presence:
+    - Overview: richpresence/overview.md
+  - Support:
+    - Overview: support//overview.md
+  - Badge Creation:
+    - Overview: badgecreation/overview.md
   - Resources:
-    - Helpful Sites: resources/sites.md
-    - Glossary of Developer Terms: resources/glossary.md
-    - Minimum Versions: resources/minimumver.md
-    - Systems Memory Mapping: resources/memmapping.md
-    - Code Notes En Masse: resources/codenotesenmasse.md
-    - Value Definition: resources/value.md
-    - Address Watcher: resources/watcher.md
-  - Examples:
-    - Examples: examples/examples.md
-    - Example 1: examples/ex1.md
-    - Example 2: examples/ex2.md
-    - Example 3: examples/ex3.md
-    - Example 4: examples/ex4.md
-    - Example 5: examples/ex5.md
-    - Example 6: examples/ex6.md
-    - Achievement Templates: examples/templates.md
+    - Overview: resources/overview.md
+  - RATools:
+    - Overview: ratools/overview.md
 
 theme:
   name: material
