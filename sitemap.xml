@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://retroachievements.org/</loc>
+         <loc>https://retroachievements.github.io/RADocs/</loc>
          <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://retroachievements.org/badgecreation/overview/</loc>
+         <loc>https://retroachievements.github.io/RADocs/badgecreation/overview/</loc>
          <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://retroachievements.org/basics/how-ra-works/</loc>
+         <loc>https://retroachievements.github.io/RADocs/basics/how-ra-works/</loc>
          <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://retroachievements.org/leaderboards/overview/</loc>
+         <loc>https://retroachievements.github.io/RADocs/leaderboards/overview/</loc>
          <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://retroachievements.org/logic/overview/</loc>
+         <loc>https://retroachievements.github.io/RADocs/logic/overview/</loc>
          <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://retroachievements.org/ratools/overview/</loc>
+         <loc>https://retroachievements.github.io/RADocs/ratools/overview/</loc>
          <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://retroachievements.org/resources/overview/</loc>
+         <loc>https://retroachievements.github.io/RADocs/resources/overview/</loc>
          <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://retroachievements.org/richpresence/overview/</loc>
+         <loc>https://retroachievements.github.io/RADocs/richpresence/overview/</loc>
          <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://retroachievements.org/support/overview/</loc>
+         <loc>https://retroachievements.github.io/RADocs/support/overview/</loc>
          <lastmod>2024-01-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
