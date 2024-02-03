@@ -1,4 +1,4 @@
-## Set Planning
+## Planning an Achievement Set
 
 ### Deciding on Game Version
 
