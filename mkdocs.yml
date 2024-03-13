@@ -8,6 +8,7 @@ nav:
     - Overview: basics/overview.md
     - How RA Works: basics/how-ra-works.md
     - Set Planning: basics/set-planning.md
+    - Emulator Setup: basics/emulator-setup.md
   - Logic:
     - Overview: logic/overview.md
   - Leaderboards:
