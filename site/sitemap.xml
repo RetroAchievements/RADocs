@@ -2,72 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://retroachievements.github.io/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://retroachievements.github.io/badgecreation/overview/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://retroachievements.github.io/basics/how-ra-works/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://retroachievements.github.io/basics/overview/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://retroachievements.github.io/basics/set-planning/</loc>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://retroachievements.github.io/leaderboards/overview/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://retroachievements.github.io/logic/overview/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://retroachievements.github.io/ratools/overview/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://retroachievements.github.io/resources/condition-syntax/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://retroachievements.github.io/resources/emulator-hotkeys/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://retroachievements.github.io/resources/memory-sizes-diagram/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://retroachievements.github.io/resources/minimumver/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://retroachievements.github.io/resources/overview/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://retroachievements.github.io/richpresence/overview/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://retroachievements.github.io/support/overview/</loc>
-         <lastmod>2024-01-15</lastmod>
+         <lastmod>2024-03-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
